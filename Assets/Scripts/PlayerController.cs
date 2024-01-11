@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class PlayerController : VehicleBehavior
 {
@@ -9,6 +8,12 @@ public class PlayerController : VehicleBehavior
     private float forwardSpeed = 3f;
     [SerializeField]
     private float angleSpeed = 1.0f;
+    [SerializeField]
+    private GameObject missile;
+    [SerializeField]
+    private Transform missileTransformSpawnForward;
+    [SerializeField]
+    private Transform missileTransformSpawnBackward;
 
     private Rigidbody rb;
     private Ray ray;
@@ -25,6 +30,16 @@ public class PlayerController : VehicleBehavior
     void Update()
     {
         ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject missileInstanceForward = Instantiate(missile);
+            GameObject missileInstanceBackward = Instantiate(missile);
+            missileInstanceForward.transform.position = missileTransformSpawnForward.position;
+            missileInstanceBackward.transform.position = missileTransformSpawnBackward.position;
+            missileInstanceForward.transform.rotation = missileTransformSpawnForward.rotation;
+            missileInstanceBackward.transform.rotation = missileTransformSpawnBackward.rotation;
+        }
     }
 
     void FixedUpdate()
