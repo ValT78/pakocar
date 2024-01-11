@@ -1932,6 +1932,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3386536991553942977, guid: bdb9b313440bd4d45a753286bc5b7aa6, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6888718104350158148, guid: bdb9b313440bd4d45a753286bc5b7aa6, type: 3}
       propertyPath: m_Name
       value: BoxMunition
@@ -1990,20 +1994,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3127033184224197861, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
-      propertyPath: missile
-      value: 
-      objectReference: {fileID: 4433265173264452960, guid: 6bb4483a23c10af4aa6bd7bf92e81db0, type: 3}
-    - target: {fileID: 4257155334346800629, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
+      propertyPath: boost
+      value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 4257155334346800629, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
-      propertyPath: m_LocalRotation.y
+    - target: {fileID: 3127033184224197861, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
+      propertyPath: timeBoosted
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4257155334346800629, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+    - target: {fileID: 3127033184224197861, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
+      propertyPath: timeUntilNextBoost
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4329612625613590056, guid: f2d80aa6ee191a1488f72d690ac6dab4, type: 3}
       propertyPath: m_LocalPosition.x

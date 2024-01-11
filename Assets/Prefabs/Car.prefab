@@ -152,8 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1813a0653a241294a9b823696836f9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionParticle: {fileID: 0}
   forwardSpeed: 25
   angleSpeed: 2
+  boost: 20
+  timeBoosted: 1
+  timeUntilNextBoost: 10
   nbrMunition: 0
   missile: {fileID: 4433265173264452960, guid: 6bb4483a23c10af4aa6bd7bf92e81db0, type: 3}
   missileTransformSpawnForward: {fileID: 7512365704366698057}
