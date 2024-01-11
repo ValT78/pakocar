@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private static TextMeshProUGUI chronometer;
     [SerializeField] private static Canvas endScreen;
 
+    private static float elapsedTime;
     private static int minutes;
     private static int seconds;
     private static int centiseconds;
@@ -26,18 +27,11 @@ public class GameManager : MonoBehaviour
     {
         if(!isPause)
         {
-            centiseconds += (int)(Time.deltaTime /60 * 100);
-            if (centiseconds >= 100)
-            {
-                centiseconds -= 100;
-                seconds++;
+            elapsedTime += Time.deltaTime;
 
-                if (seconds >= 60)
-                {
-                    seconds -= 60;
-                    minutes++;
-                }
-            }
+            centiseconds = Mathf.FloorToInt(elapsedTime * 100) % 100;
+            seconds = Mathf.FloorToInt(elapsedTime) % 60;
+            minutes = Mathf.FloorToInt(elapsedTime / 60);
         }
         print(GetFormattedTime());
     }

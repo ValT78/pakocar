@@ -97,7 +97,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 69e66e2c972ce8f46a26d1bdf0f966bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,7 +155,9 @@ MonoBehaviour:
   explosionParticle: {fileID: 417603129851164083, guid: 16b94773a416d3b418d6b452151d69f2, type: 3}
   forwardSpeed: 25
   nbrMunition: 0
-  angleSpeed: 0
+  angleSpeed: 2
+  increaseAngleSpeed: 2
+  driftAngle: 0
   boost: 20
   timeBoosted: 1
   timeUntilNextBoost: 10

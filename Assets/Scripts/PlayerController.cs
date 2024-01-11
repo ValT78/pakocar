@@ -11,6 +11,10 @@ public class PlayerController : VehicleBehavior
     [SerializeField]
     private float angleSpeed;
     [SerializeField]
+    private float increaseAngleSpeed;
+    [SerializeField]
+    private float driftAngle;
+    [SerializeField]
     private float boost;
     [SerializeField]
     private float timeBoosted;
@@ -22,12 +26,16 @@ public class PlayerController : VehicleBehavior
     private Transform missileTransformSpawnForward;
     [SerializeField]
     private Transform missileTransformSpawnBackward;
+    [SerializeField] private Renderer renderer;
+
+    [SerializeField] private Material baseMaterial;
+    [SerializeField] private Material driftMaterial;
 
     private Rigidbody rb;
     private Ray ray;
     private Camera cam;
 
-    private Vector3 angleDest;
+    private float angleDest;
 
     private bool waitUntilNextBoost;
 
@@ -62,10 +70,20 @@ public class PlayerController : VehicleBehavior
 
     void FixedUpdate()
     {
-        rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.Force);
-        Vector3 HorizontalInput = new Vector3(0, Input.GetAxis("Horizontal"), 0);
-        angleDest += HorizontalInput * angleSpeed;
-        Quaternion rotation = Quaternion.Euler(angleDest);
+        if (Mathf.Abs(angleDest - transform.rotation.y) > driftAngle)
+        {
+            rb.AddRelativeForce(Vector3.forward * forwardSpeed / 2, ForceMode.Force);
+            renderer.material = driftMaterial;
+        }
+        else
+        {
+            rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.Force);
+            renderer.material = baseMaterial;
+
+        }
+
+        angleDest += Input.GetAxis("Horizontal") * increaseAngleSpeed;
+        Quaternion rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, angleDest, 0)), angleSpeed * Time.deltaTime);
         rb.MoveRotation(rotation);
 
     }
