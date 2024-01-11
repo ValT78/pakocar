@@ -8,6 +8,7 @@ public class PlayerController : VehicleBehavior
     private float forwardSpeed;
     [SerializeField]
     [HideInInspector] public int nbrMunition;
+    [SerializeField]
     private float angleSpeed;
     [SerializeField]
     private float boost;
@@ -70,7 +71,6 @@ public class PlayerController : VehicleBehavior
 
     }
 
-
     private IEnumerator BoostSpeed()
     {
         forwardSpeed += boost;
@@ -84,5 +84,4 @@ public class PlayerController : VehicleBehavior
         yield return new WaitForSeconds(timeUntilNextBoost);
         waitUntilNextBoost = false;
     }
-
 }
