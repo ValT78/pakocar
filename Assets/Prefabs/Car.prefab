@@ -155,6 +155,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 417603129851164083, guid: 16b94773a416d3b418d6b452151d69f2, type: 3}
   forwardSpeed: 25
   nbrMunition: 0
+  angleSpeed: 0
   boost: 20
   timeBoosted: 1
   timeUntilNextBoost: 10

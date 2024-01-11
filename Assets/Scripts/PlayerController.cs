@@ -66,7 +66,6 @@ public class PlayerController : VehicleBehavior
         Vector3 HorizontalInput = new Vector3(0, Input.GetAxis("Horizontal"), 0);
         angleDest += HorizontalInput * angleSpeed;
         Quaternion rotation = Quaternion.Euler(angleDest);
-        print(rotation);
         rb.MoveRotation(rotation);
 
     }
@@ -83,5 +82,13 @@ public class PlayerController : VehicleBehavior
         waitUntilNextBoost = true;
         yield return new WaitForSeconds(timeUntilNextBoost);
         waitUntilNextBoost = false;
+    }
+
+    public override void BreakObject()
+    {
+        base.BreakObject();
+        forwardSpeed = 0;
+        angleSpeed = 0;
+        GameManager.EndOfTheGame();
     }
 }
