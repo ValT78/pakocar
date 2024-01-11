@@ -5,9 +5,15 @@ using UnityEngine;
 public class PlayerController : VehicleBehavior
 {
     [SerializeField]
-    private float forwardSpeed = 3f;
+    private float forwardSpeed;
     [SerializeField]
-    private float angleSpeed = 1.0f;
+    private float angleSpeed;
+    [SerializeField]
+    private float boost;
+    [SerializeField]
+    private float timeBoosted;
+    [SerializeField]
+    private float timeUntilNextBoost;
     [HideInInspector] public float nbrMunition;
     [SerializeField]
     private GameObject missile;
@@ -22,16 +28,25 @@ public class PlayerController : VehicleBehavior
 
     private Vector3 angleDest;
 
+    private bool waitUntilNextBoost;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         nbrMunition = 3;
+        waitUntilNextBoost = false;
     }
 
     void Update()
     {
         ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetKeyDown(KeyCode.Z) && !waitUntilNextBoost)
+        {
+            StartCoroutine(BoostSpeed());
+            StartCoroutine(Wait());
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && nbrMunition>=1)
         {
@@ -53,6 +68,20 @@ public class PlayerController : VehicleBehavior
         Quaternion rotation = Quaternion.Euler(angleDest);
         rb.MoveRotation(rotation);
 
+    }
+
+    private IEnumerator BoostSpeed()
+    {
+        forwardSpeed += boost;
+        yield return new WaitForSeconds(timeBoosted);
+        forwardSpeed -= boost;
+    }
+
+    private IEnumerator Wait()
+    {
+        waitUntilNextBoost = true;
+        yield return new WaitForSeconds(timeUntilNextBoost);
+        waitUntilNextBoost = false;
     }
 
 }
