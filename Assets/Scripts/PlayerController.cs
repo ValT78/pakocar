@@ -7,10 +7,7 @@ public class PlayerController : VehicleBehavior
     [SerializeField]
     private float forwardSpeed;
     [SerializeField]
-<<<<<<< HEAD
-    private float angleSpeed = 1.0f;
     [HideInInspector] public int nbrMunition;
-=======
     private float angleSpeed;
     [SerializeField]
     private float boost;
@@ -18,8 +15,6 @@ public class PlayerController : VehicleBehavior
     private float timeBoosted;
     [SerializeField]
     private float timeUntilNextBoost;
-    [HideInInspector] public float nbrMunition;
->>>>>>> ae4c5d97daf2cae730a5fcce30946b29fa30b932
     [SerializeField]
     private GameObject missile;
     [SerializeField]
@@ -39,20 +34,14 @@ public class PlayerController : VehicleBehavior
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-<<<<<<< HEAD
-=======
         nbrMunition = 3;
         waitUntilNextBoost = false;
->>>>>>> ae4c5d97daf2cae730a5fcce30946b29fa30b932
     }
 
     void Update()
     {
         ray = cam.ScreenPointToRay(Input.mousePosition);
 
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.Space))
-=======
         if (Input.GetKeyDown(KeyCode.Z) && !waitUntilNextBoost)
         {
             StartCoroutine(BoostSpeed());
@@ -60,7 +49,6 @@ public class PlayerController : VehicleBehavior
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && nbrMunition>=1)
->>>>>>> ae4c5d97daf2cae730a5fcce30946b29fa30b932
         {
             GameObject missileInstanceForward = Instantiate(missile);
             GameObject missileInstanceBackward = Instantiate(missile);
@@ -77,13 +65,12 @@ public class PlayerController : VehicleBehavior
         Vector3 HorizontalInput = new Vector3(0, Input.GetAxis("Horizontal"), 0);
         angleDest += HorizontalInput * angleSpeed;
         Quaternion rotation = Quaternion.Euler(angleDest);
+        print(rotation);
         rb.MoveRotation(rotation);
 
     }
 
-<<<<<<< HEAD
 
-=======
     private IEnumerator BoostSpeed()
     {
         forwardSpeed += boost;
@@ -97,6 +84,5 @@ public class PlayerController : VehicleBehavior
         yield return new WaitForSeconds(timeUntilNextBoost);
         waitUntilNextBoost = false;
     }
->>>>>>> ae4c5d97daf2cae730a5fcce30946b29fa30b932
 
 }
