@@ -8,6 +8,8 @@ public class PoliceController : VehicleBehavior
 {
     private Transform player;
     private Quaternion targetAngle;
+    private bool isDestroy;
+
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float updateTime;
     [SerializeField] private float smoothRotationSpeed;
@@ -38,6 +40,11 @@ public class PoliceController : VehicleBehavior
         StartCoroutine(Destination());
     }
 
-
+    public override void BreakObject()
+    {
+        base.BreakObject();
+        isDestroy = true;
+        Destroy(agent);
+    }
 
 }

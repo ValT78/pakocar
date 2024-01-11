@@ -19,4 +19,12 @@ public class Missile : MonoBehaviour
     {
         rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Force);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(TryGetComponent(out PoliceController controller))
+        {
+            controller.BreakObject();
+        }
+    }
 }
