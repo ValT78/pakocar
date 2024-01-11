@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.FilePathAttribute;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : VehicleBehavior
 {
     [SerializeField]
     private float forwardSpeed = 3f;
