@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4032934765860569312}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4329612625613590056}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6932080721675784543
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 25
   angleSpeed: 2
-  missile: {fileID: 0}
+  nbrMunition: 0
+  missile: {fileID: 4433265173264452960, guid: 6bb4483a23c10af4aa6bd7bf92e81db0, type: 3}
   missileTransformSpawnForward: {fileID: 7512365704366698057}
   missileTransformSpawnBackward: {fileID: 4257155334346800629}
 --- !u!54 &3715730591341101985
