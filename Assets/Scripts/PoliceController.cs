@@ -26,6 +26,7 @@ public class PoliceController : VehicleBehavior
     // Update is called once per frame
     void Update()
     {
+        if(!isDestroy)
         transform.rotation = Quaternion.Slerp(transform.rotation, targetAngle, smoothRotationSpeed * Time.deltaTime);
     }
 
@@ -37,7 +38,7 @@ public class PoliceController : VehicleBehavior
         
 
         yield return new WaitForSeconds(updateTime);
-        StartCoroutine(Destination());
+        if(agent) StartCoroutine(Destination());
     }
 
     public override void BreakObject()

@@ -8,7 +8,7 @@ public class PlayerController : VehicleBehavior
     private float forwardSpeed = 3f;
     [SerializeField]
     private float angleSpeed = 1.0f;
-    [HideInInspector] public float nbrMunition;
+    [HideInInspector] public int nbrMunition;
     [SerializeField]
     private GameObject missile;
     [SerializeField]
@@ -26,14 +26,13 @@ public class PlayerController : VehicleBehavior
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-        nbrMunition = 3;
     }
 
     void Update()
     {
         ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetKeyDown(KeyCode.Space) && nbrMunition>=1)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject missileInstanceForward = Instantiate(missile);
             GameObject missileInstanceBackward = Instantiate(missile);
@@ -41,7 +40,6 @@ public class PlayerController : VehicleBehavior
             missileInstanceBackward.transform.position = missileTransformSpawnBackward.position;
             missileInstanceForward.transform.rotation = missileTransformSpawnForward.rotation;
             missileInstanceBackward.transform.rotation = missileTransformSpawnBackward.rotation;
-            nbrMunition -= 1;
         }
     }
 
@@ -54,5 +52,7 @@ public class PlayerController : VehicleBehavior
         rb.MoveRotation(rotation);
 
     }
+
+
 
 }

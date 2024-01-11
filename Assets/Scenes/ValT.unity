@@ -774,6 +774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4938360109805658752, guid: c9ad9cfe14427534197dd054e45e8eb7, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5973139067544367794, guid: c9ad9cfe14427534197dd054e45e8eb7, type: 3}
       propertyPath: m_Name
       value: Police

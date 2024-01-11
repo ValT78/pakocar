@@ -22,9 +22,12 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(TryGetComponent(out PoliceController controller))
+        print(other.name);
+        if(other.TryGetComponent(out PoliceController controller))
         {
             controller.BreakObject();
+            
         }
+        Destroy(gameObject);
     }
 }
